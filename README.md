@@ -116,6 +116,7 @@ The dataset consists of:
 * Train/validation split: **90/10**
 
 The training data is highly imbalanced, making Macro F1 especially important for evaluating the model.
+The competition dataset is not included in this repository. The notebook expects the dataset to be available through the Kaggle competition input directory.
 
 ## Key Takeaways
 
