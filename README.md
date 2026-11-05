@@ -50,34 +50,59 @@ This resulted in **30 effective prediction paths** across the two models.
 
 ## Results
 
-| Approach              |   Validation / Test Macro F1 |
-| --------------------- | ---------------------------: |
-| Baseline CNN          |                        67.3% |
-| Improved Augmentation |                        72.1% |
-| Single WRN-28-6       |                       87.84% |
-| Model 1 + TTA         |                       89.87% |
-| Model 2 + TTA         |                       92.48% |
-| **Ensemble + TTA**    | **90.90% Val / 88.30% Test** |
+Model performance was evaluated using **Macro F1 Score**, with separate reporting for validation and test performance.
 
-The final system achieved **88.3% Macro F1 on the held-out test set**, improving substantially over the initial baseline.
+| Approach | Validation Macro F1 | Test Macro F1 |
+|:---|---:|---:|
+| Baseline CNN | 67.3% | — |
+| Improved Augmentation | 72.1% | — |
+| Single WRN-28-6 | 87.84% | — |
+| Model 1 + TTA | 89.87% | — |
+| Model 2 + TTA | 92.48% | — |
+| **Ensemble + TTA** | **90.90%** | **88.30%** |
+
+The final ensemble achieved **90.90% validation Macro F1** and **88.30% test Macro F1**.
+
+Probability averaging combines predictions from both independently trained models to improve robustness under distribution shift.
+
+*Note: Test results for intermediate approaches are not reported.*
+
+## Project Visuals
+
+### Dataset Distribution and Class Imbalance
+
+![Dataset EDA](assets/dataset_imbalance_eda.png)
+
+### WideResNet-28-6 Architecture
+
+![Model Architecture](assets/wideresnet_architecture.png)
+
+### Training and Validation Curves
+
+![Training Curves](assets/training_curves.png)
+
 
 ## Repository Structure
 
 ```text
-ShiftGuard10/
+shiftguard10-robust-classification/
 │
-├── code/
-│   └── <training-and-inference-code>
+├── 20_Code.ipynb
 │
-├── presentation/
-│   └── ShiftGuard10_Presentation.pdf
+├── docs/
+│   ├── Project_Report.pdf
+│   └── Project_Presentation.pdf
 │
-├── report/
-│   └── ShiftGuard10_Report.pdf
+├── assets/
+│   ├── dataset_imbalance_eda.png
+│   ├── wideresnet_architecture.png
+│   ├── augmentation_strategy.png
+│   ├── training_curves.png
+│   ├── ensemble_tta_workflow.png
+│   └── final_results_summary.png
 │
 └── README.md
 ```
-
 Replace the placeholder code filename with the actual notebook/script you upload.
 
 ## Dataset
@@ -100,13 +125,12 @@ The experiments showed that:
 * **WideResNet-28-6** provided substantially better performance than the initial CNN baseline.
 * Ensemble diversity through different seeds and dropout settings improved robustness.
 * **TTA + probability averaging** further improved prediction stability.
-
+* 
 ## Project Documents
 
-The repository also contains the complete project documentation:
-
-* **Presentation** — project motivation, methodology, architecture, training strategy, and results.
-* **Report** — detailed methodology, experiments, equations, analysis, and discussion.
+* [Detailed Project Report](docs/Project_Report.pdf)
+* [Project Presentation](docs/Project_Presentation.pdf)
+* [Implementation Notebook](20_Code.ipynb)
 
 ## Technologies
 
